@@ -18,6 +18,14 @@ comments:
 		'name': 'keywords.heptagon'
 	}
 	{
+		'match': '(^|[^a-zA-Z])(node|external fun|external|fun|open|tel|let|const|type|returns|fby|pre|->|var|automaton|end|reset|every|then|merge|if|else if|else|switch)[^a-zA-Z]'
+		'name': 'keywords.heptagon'
+	}
+	{
+		'match': '(^|[^a-zA-Z])(false|true)[^a-zA-Z]'
+		'name': 'value.heptagon'
+	}
+	{
 		'match': ':?(\n|\t|\r| )*(int|float|bool|char|string|false|true)([^a-zA-Z\(])'
 		'captures':
 			'1':
@@ -37,7 +45,7 @@ comments:
 			'1':
 				'name': 'space.heptagon'
 			'2':
-				'name': 'integer.heptagon'
+				'name': 'value.heptagon'
 			'3':
 				'name': 'space.heptagon'
 	}
@@ -63,7 +71,7 @@ comments:
 
 	{
 		'match': '".*"|\'.*\''
-		'name': 'string.heptagon'
+		'name': 'value.heptagon'
 	}
 
 	{
