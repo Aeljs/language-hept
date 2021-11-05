@@ -1,0 +1,79 @@
+# If this is your first time writing a language grammar, check out:
+#   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
+
+'scopeName': 'source.heptagon'
+'name': 'Heptagon'
+'fileTypes': [
+  'ept'
+  'epi'
+]
+
+comments:
+  start: '(*'
+  end: '*)'
+
+'patterns': [
+	{
+		'match': '(^|[^a-zA-Z])(node|external fun|external|fun|open|tel|let|const|type|returns|fby|pre|->|var|automaton|end|reset|every|then|merge|if|else if|else|switch)[^a-zA-Z]'
+		'name': 'keywords.heptagon'
+	}
+	{
+		'match': ':?(\n|\t|\r| )*(int|float|bool|char|string|false|true)([^a-zA-Z\(])'
+		'captures':
+			'1':
+				'name': 'space.heptagon'
+			'2':
+				'name': 'types.heptagon'
+			'3':
+				'name': 'space.heptagon'
+	}
+	{
+		'match': '(=|\\+\\.|-\\.|/\\.|\\*\\.|\\+|-|/|\\*)'
+		'name': 'operator.heptagon'
+	}
+	{
+		'match': '([^a-zA-Z])([0-9]+\\.?[0-9]*)(\n|\t|\r| )*?'
+		'captures':
+			'1':
+				'name': 'space.heptagon'
+			'2':
+				'name': 'integer.heptagon'
+			'3':
+				'name': 'space.heptagon'
+	}
+
+	{
+		'match': ':(\n|\t|\r| )*([a-zA-Z][a-zA-Z0-9]*)'
+		'captures':
+			'1':
+				'name': 'space.heptagon'
+			'2':
+				'name': 'homemade.heptagon'
+	}
+
+	{
+		'match': '(\\(\\*)(.)*\\*\\)'
+		'name': 'comments.heptagon'
+	}
+	{
+		'begin': '(\\(\\*)(.)*'
+		'name': 'comments.heptagon'
+		'end': '\\*\\)'
+	}
+
+	{
+		'match': '".*"|\'.*\''
+		'name': 'string.heptagon'
+	}
+
+	{
+		'match': '[a-z][a-zA-Z0-9]*'
+		'name': 'space.heptagon'
+	}
+
+	{
+		'match': '[A-Z][a-zA-Z0-9]*'
+		'name': 'library.heptagon'
+	}
+
+]
